@@ -1,133 +1,789 @@
-# 开源BIM技术生态
+# 开源 BIM 技术生态
 
+**开源世界存在不少可以直接拿来研究甚至 Fork 的 BIM 浏览器，但没有一个项目像 Chromium 一样垄断整个技术栈。**
 
+原因不在于 BIM 开源生态不成熟，恰恰相反——是因为 BIM 的技术边界太宽。它同时涉及：**标准、数据库、几何内核、三维引擎、运行时格式、大模型渲染、工程语义和协同平台。**
 
+| 目标                              | 项目                                           |
+| --------------------------------- | ---------------------------------------------- |
+| 直接 Fork 一个完整 Web BIM Viewer | **xeokit-bim-viewer**                          |
+| 研究现代 Web BIM 技术栈           | **That Open Components + Fragments + web-ifc** |
+| 研究 IFC Kernel                   | **IfcOpenShell**                               |
+| 研究 Model Server                 | **BIMserver**                                  |
+| 研究经典 Server + Viewer          | **BIMserver + BIMsurfer**                      |
+| Windows / .NET BIM                | **xBIM + XbimXplorer**                         |
+| 研究 AEC 数据平台                 | **Speckle**                                    |
+| 研究基础设施数字孪生              | **iTwin.js**                                   |
+| 研究 BIM + GIS / 超大空间模型     | **CesiumJS + 3D Tiles**                        |
 
+------
 
-| 项目                                  | 主要用途                                                     | 适合关注原因                                                 |
-| ------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **IfcOpenShell / Bonsai**             | IFC 解析、转换、几何引擎、BIM 自动化、Blender 原生 IFC 建模  | OpenBIM 生态里非常核心的项目。IfcOpenShell 提供 C++/Python API、IfcConvert、BCF、IDS、Bonsai 等工具；Bonsai 是基于 Blender 的原生 IFC BIM 创作平台。([GitHub](https://github.com/IfcOpenShell/IfcOpenShell?utm_source=chatgpt.com)) |
-| **ThatOpen / web-ifc / components**   | Web 端读取、写入、可视化 IFC；构建浏览器 BIM 应用            | JavaScript / Three.js 方向最值得看的 IFC 工具链之一。`web-ifc` 面向高速读写 IFC，`components` 提供尺寸、楼层导航、DXF 导出等浏览器 BIM 应用组件。([GitHub](https://github.com/ThatOpen/engine_web-ifc?utm_source=chatgpt.com)) |
-| **xeokit-sdk**                        | Web 端高性能 BIM / IFC / 工程模型查看器                      | 适合做“轻量化 BIM 平台”“网页模型浏览器”“数字孪生前端”。其定位是浏览器中查看高细节、高精度 3D 工程和 BIM 模型。([GitHub](https://github.com/xeokit/xeokit-sdk?utm_source=chatgpt.com)) |
-| **BIMserver**                         | BIM 模型服务器、IFC 数据管理、协同平台后端                   | 经典 OpenBIM 后端项目，可存储和管理建筑项目 BIM 信息，数据基于 IFC 开放标准。([GitHub](https://github.com/opensourceBIM/BIMserver?utm_source=chatgpt.com)) |
-| **BIMsurfer**                         | WebGL BIM / IFC 模型查看器                                   | 属于 opensourceBIM 生态，常与 BIMserver 搭配，用于网页端 IFC 可视化。opensourceBIM 组织还维护多个 BIMserver 插件和相关工具。([GitHub](https://github.com/opensourceBIM?utm_source=chatgpt.com)) |
-| **xBIM Toolkit / XbimEssentials**     | .NET / C# 处理 IFC、COBie、几何和可视化                      | 如果你做的是 C#、.NET、Windows 企业应用，xBIM 比 JavaScript 生态更合适。官方定位是支持 buildingSMART IFC 数据模型的开源 BIM 开发工具包。([GitHub](https://github.com/xBimTeam?utm_source=chatgpt.com)) |
-| **Speckle / speckle-server**          | AEC 数据协同、版本化、连接 Revit/Rhino/Grasshopper/Blender 等工具 | 更偏“建筑工程数据协同平台”，不是单纯 IFC 解析器。适合研究 BIM 数据平台、模型版本管理、跨软件数据流转。([GitHub](https://github.com/specklesystems?utm_source=chatgpt.com)) |
-| **FreeCAD BIM Workbench / NativeIFC** | 开源参数化建模、BIM 工作流、IFC 导入导出                     | 适合学习“开源 Revit/ArchiCAD 替代路径”。FreeCAD BIM Workbench 提供墙、梁、屋顶、窗、楼梯、管道等参数化 BIM 对象，并支持 IFC。([GitHub](https://github.com/yorikvanhavre/BIM_Workbench?utm_source=chatgpt.com)) |
-| **Ladybug Tools / Honeybee**          | 建筑性能分析、日照、能耗、Radiance、EnergyPlus、OpenStudio   | 严格说它不是 BIM 核心库，但在建筑设计与 BIM 工作流中很常见，适合做绿色建筑、能耗分析、设计性能评估。([GitHub](https://github.com/ladybug-tools/honeybee-energy?utm_source=chatgpt.com)) |
-| **Cloud2BIM**                         | 点云转 IFC / Scan-to-BIM                                     | 新一些的研究型项目，面向激光扫描/点云自动生成 IFC 模型。论文称其支持墙、板、洞口、房间分区等自动化流程。([arXiv](https://arxiv.org/abs/2503.11498?utm_source=chatgpt.com)) |
-| **MCP4IFC / IfcLLM 等 AI+BIM 项目**   | 用大模型查询、生成、修改 IFC/BIM 模型                        | 这是近两年快速出现的方向，适合研究“AI 助手 + BIM 模型操作”。MCP4IFC 提供基于 MCP 的 IFC 查询和编辑工具；IfcLLM 研究自然语言查询 IFC 模型。([arXiv](https://arxiv.org/abs/2511.05533?utm_source=chatgpt.com)) |
+## 一、技术概览
 
-| 项目                                        | 定位                                      | 适合场景                                        | 评价                                                         |
-| ------------------------------------------- | ----------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
-| **That Open Engine / That Open Components** | 基于 Three.js 的 Web BIM 开发组件库       | 自研 BIM 浏览器、IFC 查看器、模型审查工具       | 当前比较活跃，组件化程度高。官方说明它提供浏览器端 BIM 应用能力，如尺寸、楼层平面导航、DXF 导出、后处理等；其文档也说明相关库可用于快速创建 3D BIM 软件。([GitHub](https://github.com/ThatOpen/engine_components?utm_source=chatgpt.com)) |
-| **web-ifc**                                 | IFC 解析/读写核心库，WebAssembly 加速     | 浏览器端解析 IFC、查询 IFC 属性、生成几何       | 它本身不是完整浏览器 UI，而是 IFC 底层引擎。官方描述为 JavaScript 库，可高速读取和写入 IFC 文件，是 That Open 生态的一部分。([GitHub](https://github.com/ThatOpen/engine_web-ifc?utm_source=chatgpt.com)) |
-| **xeokit SDK**                              | 高性能 Web BIM / AEC 可视化 SDK           | 大模型查看器、工程模型平台、IFC/点云/CAD 可视化 | 偏专业工程可视化。支持浏览器端 BIM Viewer 开发，常用 XKT 轻量化格式，也可加载 glTF、CityJSON、LAZ、OBJ 等格式。需要注意许可证：xeokit SDK 是 AGPLv3，闭源商用一般要看商业授权。([GitHub](https://github.com/xeokit/xeokit-sdk?utm_source=chatgpt.com)) |
-| **xeokit-bim-viewer**                       | 基于 xeokit SDK 的现成 2D/3D BIM Viewer   | 快速搭一个浏览器 BIM 查看器                     | 比 xeokit SDK 更偏“开箱即用”。官方说明它是开源 2D/3D BIM Viewer，可在浏览器中加载本地模型文件，并已集成于 OpenProject BIM。([Xeokit](https://xeokit.github.io/xeokit-bim-viewer/?utm_source=chatgpt.com)) |
-| **Speckle Viewer**                          | Speckle 生态里的 Web 3D 模型查看器        | AEC 数据协同、模型流转、跨软件数据平台          | 更偏“BIM 数据协作平台 + Viewer”，不是纯 IFC 浏览器。官方文档称 Speckle Viewer 是开源 3D 模型查看器，可在 Web 浏览器中渲染大型模型；`@speckle/viewer` 可作为 npm 包嵌入 Web 应用。([Speckle Docs](https://docs.speckle.systems/developers/viewer/introduction?utm_source=chatgpt.com)) |
-| **BIMsurfer**                               | WebGL IFC Viewer，常与 BIMserver 生态配合 | OpenBIM 后端 + Web 查看器研究                   | 老牌开源 BIM Web Viewer。当前 v3 版本是 WebGL 2.0，面向高性能，并引入 3D Tiles；但官方也说明 v3 尚无正式 release，生产使用要谨慎评估。([GitHub](https://github.com/opensourceBIM/BIMsurfer?utm_source=chatgpt.com)) |
-| **iTwin.js**                                | 基础设施数字孪生 Web 开发框架             | 桥梁、道路、轨道、市政、工业设施数字孪生        | Bentley 生态相关，但核心是开源的。官方称 iTwin.js 是开源项目，并用于构建 iTwin 应用；iTwin Viewer 可在浏览器中查看和交互 iModels。([iTwin.js](https://www.itwinjs.org/?utm_source=chatgpt.com)) |
-| **CesiumJS**                                | WebGIS / 3D Tiles 大场景引擎              | BIM + GIS、城市级数字孪生、园区/线路/电网场景   | 不是纯 BIM 引擎，但适合 BIM/GIS 融合。CesiumJS 是开源 JavaScript 库，支持 WebGL、3D Tiles 和大规模地理空间数据；3D Tiles 规范本身也覆盖 BIM/CAD、3D 建筑、点云等内容。([GitHub](https://github.com/CesiumGS/cesium?utm_source=chatgpt.com)) |
+### 1. BIM 浏览器≠ 3D Viewer
 
-## OpenBIM
+普通 Web 三维查看器的核心链路相对简单：
 
-
-
-**OpenBIM 不是一个单一开源组织，也不是某个软件框架。**
-
-更准确地说，**OpenBIM 是一种基于开放标准的 BIM 协作理念、方法体系和工作流**。它强调不同软件、不同参与方之间，能够通过开放、中立、非专有的数据标准交换 BIM 信息，而不是被某一家软件厂商的私有格式绑定。
-
-官方定义里，buildingSMART 认为 openBIM 的核心是 **vendor neutral collaborative process**，也就是“厂商中立的协作流程”。它的目标是提升建筑资产行业中数字数据的可访问性、可用性、管理能力和可持续性。([buildingSMART International](https://www.buildingsmart.org/about/openbim-old/openbim-definition/?utm_source=chatgpt.com))
-
-可以这样理解：
-
-| 概念                            | 它是什么                                       | 类比                                  |
-| ------------------------------- | ---------------------------------------------- | ------------------------------------- |
-| **OpenBIM**                     | 开放 BIM 协作理念 / 标准体系 / 工作流          | 类似“Web 开放标准生态”                |
-| **buildingSMART**               | 推动 OpenBIM 标准的国际组织                    | 类似 W3C 之于 Web 标准                |
-| **IFC**                         | OpenBIM 最核心的数据交换标准                   | 类似 HTML / JSON / XML 的行业数据格式 |
-| **BCF**                         | BIM 问题沟通、批注、协同标准                   | 类似 issue / comment / markup         |
-| **IDS**                         | 信息交付要求标准，用于定义模型必须包含什么信息 | 类似可机器读取的交付检查规则          |
-| **IfcOpenShell、xBIM、web-ifc** | 基于 OpenBIM / IFC 的开源软件库或工具          | 类似实现标准的开源 SDK                |
-
-所以，**OpenBIM 和开源不是一回事**。
-
-OpenBIM 里的 “open” 主要指：
-
-1. **开放标准**：比如 IFC、BCF、IDS、bSDD 等；
-2. **厂商中立**：Revit、Tekla、Archicad、Bentley、FreeCAD、Blender Bonsai 等理论上都可以通过 IFC/BCF 等标准协作；
-3. **数据可交换**：模型信息不应该只锁死在某个软件的私有格式里；
-4. **流程可验证**：通过 IDS、MVD、IDM 等方式定义交付要求、检查模型质量。
-
-但 OpenBIM **不等于所有软件都必须开源**。Autodesk Revit、Graphisoft Archicad、Tekla、Bentley 等商业软件也可以支持 OpenBIM，只要它们支持相关开放标准。buildingSMART 中国也把 IFC、BCF、IDM、MVD、IDS、bSDD 等归为共同构成 openBIM 方法体系的核心标准。([buildingSMART China](https://19650.org/standards?utm_source=chatgpt.com))
-
-更具体一点：
-
-**buildingSMART 是组织。**
-它是推动 OpenBIM 标准的主要国际组织，维护或推动 IFC、BCF、IDS、bSDD 等标准。OpenBIM KnowledgeBase 也把 buildingSMART 称为 openBIM 的“home”，即主要推动方。([openbim-knowledgebase.org](https://openbim-knowledgebase.org/en/docs/bimcert-manual-2024/chapter-1-introduction-openbim-and-buildingsmart/chapter-1-1-buildingsmart-as-the-home-of-openbim/?utm_source=chatgpt.com))
-
-**IFC 是标准 / 数据模型。**
-IFC，全称 Industry Foundation Classes，是 BIM 模型在不同软件之间交换信息的开放标准。你可以把它理解成 BIM 领域最重要的开放数据格式。
-
-**IfcOpenShell、xBIM、web-ifc 是框架 / SDK / 工具库。**
-它们不是 OpenBIM 本身，而是实现或使用 OpenBIM 标准的技术项目。
-
-一句话总结：
-
-> **OpenBIM 是“开放标准驱动的 BIM 协作体系”；buildingSMART 是主要推动这个体系的组织；IFC/BCF/IDS 是这个体系里的标准；IfcOpenShell、xBIM、web-ifc 等是实现这些标准的开源工具。**
-
-如果你是做工程建设 + 企业数字化转型，理解 OpenBIM 的重点不是“它是不是开源”，而是：**它能不能让模型数据从设计、施工、运维系统中解耦出来，变成企业可长期管理、可集成、可审计的数据资产。**
-
-
-
-
-
-
-
-## 附录：系统架构
-
-游戏引擎适合做 BIM/GIM 的交互式可视化、培训仿真、漫游展示和轻量数字孪生前端；IFC/GIM 解析、模型轻量化、属性管理、版本管理和协同审查，应交给外部 BIM 工具链或后端模型服务。
-
-### BIM 浏览器
-
-```
-BIM / GIM / IFC / Revit 模型
-        ↓
-模型转换与轻量化
-        ↓
-几何数据 + 构件属性 + 层级结构
-        ↓
-Web / 桌面 BIM 浏览器
-        ↓
-属性查询、剖切、测量、协同、运维、进度、审查
+```text
+3D文件
+   ↓
+Geometry / Material
+   ↓
+Scene Graph
+   ↓
+GPU Rendering
 ```
 
-### 游戏引擎
+典型技术是：
 
-```
-3D 资产 / 场景 / 角色 / 动画
-        ↓
-材质、光照、物理、脚本、交互逻辑
-        ↓
-实时渲染引擎
-        ↓
-沉浸式体验、仿真、训练、展示、交互应用
+```text
+glTF / GLB
+    ↓
+Three.js
+    ↓
+WebGL / WebGPU
 ```
 
-游戏引擎适合做**高表现力的 BIM 应用外壳**，但不是开箱即用的 BIM 数据平台。
+BIM 浏览器的问题复杂得多。对于一个 IFC 构件，三维几何只是信息的一部分：
 
-1. **模型轻量化**
-    BIM 模型原始数据通常很重，不能直接全部塞进游戏引擎。
-2. **构件 ID 保留**
-    转成 FBX/glTF 后，很多 BIM 构件属性容易丢失。
-3. **属性数据库关联**
-    需要把构件几何和属性表、设备台账、文档、传感器数据关联起来。
-4. **专业层级维护**
-    比如项目、单体、楼层、系统、专业、构件分类。
-5. **工程坐标处理**
-    BIM/GIM 常用大地坐标或工程坐标，游戏引擎更习惯局部坐标。
-6. **模型增量更新**
-    设计模型变更后，如何只更新变更部分，而不是重新导入整个场景。
-7. **审查与协同功能**
-    比如剖切、测量、批注、碰撞、问题单、版本对比等。
+```text
+IfcElement
+   │
+   ├── GlobalId
+   ├── Type
+   ├── Name
+   ├── Classification
+   ├── PropertySet
+   ├── Quantity
+   │
+   ├── Spatial Relationship
+   ├── Type Relationship
+   ├── System Relationship
+   │
+   └── Representation
+            ↓
+         Geometry
+```
+
+也就是说：**BIM 浏览器真正处理的是“工程对象”，而不是 Mesh。**Mesh 是工程对象的一种三维表达。这决定了 BIM 浏览器天然至少包含：
+
+```text
+标准解析
++
+对象模型
++
+几何计算
++
+模型运行时
++
+大模型渲染
++
+工程交互
++
+属性与关系查询
+```
+
+------
+
+### 2. 开源全景图
+
+目前可以把主流开源 BIM 技术放进下面这张地图。
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│                       OpenBIM 标准层                         │
+│                                                              │
+│       IFC          IDS          BCF          bSDD            │
+│                     buildingSMART                            │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    BIM / IFC Kernel 层                       │
+│                                                              │
+│         IfcOpenShell        web-ifc        xBIM              │
+│                                                              │
+│      IFC解析 / Schema / Geometry / Property / Relationship   │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    BIM Runtime / Format                      │
+│                                                              │
+│          Fragments           XKT / GLB 等                    │
+│                                                              │
+│    几何组织 / Metadata / Worker / Streaming / Spatial Index │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                       Viewer SDK 层                          │
+│                                                              │
+│       That Open Components          xeokit SDK               │
+│                                                              │
+│ Selection / Clipping / Measurement / Tree / Properties      │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                        Viewer 产品层                         │
+│                                                              │
+│      xeokit-bim-viewer      BIMsurfer      XbimXplorer       │
+│                                                              │
+│               完整 UI + BIM 浏览交互                        │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                   BIM 数据与协同平台层                       │
+│                                                              │
+│                BIMserver          Speckle                    │
+│                                                              │
+│       Object / Query / Version / Project / Collaboration     │
+└──────────────────────────────┬───────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│              Infrastructure / Digital Twin 层                │
+│                                                              │
+│           iTwin.js                CesiumJS / 3D Tiles        │
+│                                                              │
+│ BIM + GIS + Reality + PointCloud + IoT + Large Scale        │
+└──────────────────────────────────────────────────────────────┘
+```
+
+不应该把不同层级的项目相互比较，例如 IfcOpenShell 是 IFC 内核和几何引擎；xeokit 是面向 AEC 大模型的 Viewer Engine，其实两者根本不是一个层次。
+
+------
+
+### 3. 主要技术路线
+
+#### 浏览器原生 IFC
+
+> **浏览器自己理解 IFC。**不需要预先把 IFC 转换成另外一种服务器格式。
+
+典型路线：
+
+```text
+IFC
+ ↓
+WebAssembly
+ ↓
+IFC Objects / Geometry
+ ↓
+Three.js
+ ↓
+BIM Components
+```
+
+代表：`web-ifc + That Open Components`
+
+优点：技术链短、部署简单、IFC 原生能力强。
+
+问题：大 IFC 文件意味着浏览器要承担STEP 解析、IFC Schema 处理、几何求值、三角化、属性解析、内存组织，这些工作都比较重。`web-ifc` 通过 `C++ → WebAssembly` 来解决性能问题，并同时提供浏览器和 Node.js 使用方式。
+
+------
+
+#### 模型预处理 + 高性能 Runtime
+
+> **IFC 负责交换，Fragments 负责运行。**IFC 是交换格式，不应该直接作为浏览器运行格式。
+
+典型路线：
+
+```text
+IFC
+ ↓
+Offline / Server Conversion
+ ↓
+Optimized Runtime Format
+ ↓
+Web Viewer
+```
+
+代表：`xeokit`、`That Open Fragments`。
+
+例如 That Open 已经把 Fragments 独立成一个 BIM visualization / persistence layer，其当前设计包括：`.frag + FlatBuffers + Worker + Model Data + Streaming + Rendering Runtime`。官方说明中，Fragments 的 Worker 持有模型数据，再向主线程流送需要渲染的数据。2026 年发布的 3.4.0 又加入了 CRS、IFC splitter、extractor、LOD highlight 等能力。
+
+------
+
+#### Model Server + Thin Viewer
+
+> BIM 根本不应该以“文件”为系统中心。
+
+典型路线：
+
+```text
+IFC
+ ↓
+Object Database
+ ↓
+Query / Filter / Merge / Version
+ ↓
+Viewer
+```
+
+代表：`BIMserver + BIMsurfer`
+
+BIMserver 官方明确强调自己**不是 file server**，而采用 model-driven architecture，将 IFC 保存为对象，因此可以查询、合并、过滤、版本管理，再动态生成 IFC。
+
+------
+
+#### AEC Data Platform / Digital Twin
+
+扩大系统边界：
+
+```text
+BIM
++
+其他工程模型
++
+GIS
++
+Reality
++
+IoT
++
+Version
++
+Collaboration
+```
+
+代表：`Speckle`、`iTwin.js`、`Cesium / 3D Tiles`
+
+Speckle 的 Server 仓库已经同时包含：Server、Frontend、3D Viewer、Object Loader、Preview Service、Webhook Service。其 Viewer 只是整个 AEC Data Hub 的一个组件。
+
+iTwin.js 则直接定位为：创建、查询、修改和显示 Infrastructure Digital Twins 的开源库，并明确支持聚合 Engineering Models、Reality Data、GIS 和 IoT。
+
+------
+
+### 4. BIM 浏览器难点
+
+#### IFC ≠ Browser Runtime
+
+> OpenBIM 标准解决的是交换问题，而 BIM Viewer 还需要解决运行问题。
+
+IFC 为长期、厂商中立的数据交换设计，非常丰富且复杂。
+
+```text
+IfcProduct
+IfcTypeObject
+IfcPropertySet
+IfcRelDefinesByType
+IfcRelContainedInSpatialStructure
+IfcRepresentation
+IfcMappedItem
+IfcBooleanClippingResult
+...
+```
+
+浏览器真正需要的却是：`GPU-friendly Geometry + Spatial Index + Object ID + Runtime Properties`，因此几乎所有高性能系统最后都会增加自己的 Runtime Layer。于是出现：
+
+```text
+xeokit        → XKT / optimized models
+That Open     → Fragments
+Speckle       → Speckle Objects
+Bentley       → iModel
+Cesium        → 3D Tiles
+```
+
+------
+
+#### BIM 语义空间复杂
+
+网页的 `<button>` 基本到处都是 `<button>`，而 BIM 里的对象高度领域化。
+
+建筑：Wall、Door、Slab、Space
+
+铁路：Alignment、Track、Signal
+
+道路：Road、Pavement、Alignment
+
+工业设施：Equipment、Pipe、Valve、System
+
+因此很难定义一个所有行业都满意的统一 Runtime Object Model。
+
+------
+
+#### 几何本身不统一
+
+普通 Web Viewer 通常处理三角网格，IFC 却可能包含：
+
+```text
+SweptSolid
+BRep
+CSG
+MappedRepresentation
+Boolean
+TriangulatedFaceSet
+Curve
+Surface
+```
+
+于是 BIM Viewer 前面往往必须存在真正的：**Geometry Kernel**。这也是 IfcOpenShell 和 xBIM 这种项目存在的重要原因，IfcOpenShell 既负责 IFC parsing，也拥有 IFC geometry engine；目前对 IFC2x3、IFC4 以及 IFC4.3 等 Schema 提供解析支持。
+
+------
+
+#### 项目规模增长
+
+一个几十 MB 的模型和数 GB 工程模型是两种完全不同的问题。真正进入工程应用之后，很快会遇到：
+
+```text
+几十万构件
+数百万 Mesh
+重复设备
+大量 Property
+大地坐标
+多模型联合
+点云
+动态加载
+```
+
+所以 BIM Viewer 的竞争重点不仅仅是打开 `.ifc` 或者 `.gim` 文件，而是**谁能把几十万甚至更多工程对象流畅地组织起来？**这也是 Fragments、XKT、3D Tiles 等运行格式不断出现的主要原因。
+
+------
+
+#### 功能边界扩张
+
+从三位模型展示，到多参建方协作，到GIS、物联网、VR、仿真等，BIM与数字孪生的技术边界越来越模糊。因此这个市场最终自然分裂成：
+
+```text
+IFC Kernel
+BIM Viewer SDK
+Model Server
+AEC Platform
+Digital Twin Platform
+```
+
+而不是收敛成一个单体应用。
+
+------
+
+## 二、技术路线发展
+
+从开源项目演进历史看，BIM Viewer 可以大致划分成五个阶段。
+
+------
+
+### Desktop IFC Kernel
+
+早期最核心的问题是
+
+> **IFC 究竟应该怎样被软件理解？**
+
+代表项目：
+
+```text
+IfcOpenShell
+xBIM
+BIMserver
+```
+
+核心工作包括：
+
+```text
+STEP Parser
+EXPRESS Schema
+Entity
+Relationship
+Property
+Geometry Kernel
+```
+
+------
+
+### IFC → Mesh → Web Viewer
+
+WebGL 和 Three.js 成熟后，问题变成：
+
+> 怎样把 IFC 显示在浏览器？
+
+典型链路：
+
+```text
+IFC
+ ↓
+Parser
+ ↓
+Triangles
+ ↓
+Three.js Mesh
+ ↓
+WebGL
+```
+
+代表项目：
+
+```text
+IFC.js
+web-ifc-three
+web-ifc-viewer
+```
+
+这一时期最大的突破是：**BIM 第一次可以不依赖重型桌面 CAD/BIM 软件，在浏览器里运行。**
+
+但问题也逐渐暴露出来，Mesh ≠ BIM Object，如果只是把 IFC 转成 Three.js Mesh，最终很容易出现`mesh.userData.properties`大量工程语义被挂在渲染对象上。对于小Demo 没问题，对大型工程软件却很难长期维护。旧的 `web-ifc-viewer` 和 `web-ifc-three` 目前已经被官方标记为 deprecated，That Open 推荐转向 Components。
+
+------
+
+### 浏览器原生 BIM Component
+
+随后出现一个明显变化：Viewer 不再作为一个完整黑盒，而开始组件化。技术思想从"Use this Viewer"转向"Build your BIM Application"。
+
+代表项目：
+
+```text
+That Open Components
+```
+
+它提供的不是一个固定 Viewer，而是：
+
+```text
+World
+Camera
+Renderer
+Highlighter
+Raycaster
+Classifier
+Clipping
+Measurement
+Property Viewer
+...
+```
+
+每一个能力都是 Component。官方目前将其定义为基于 Three.js 的 BIM 工具集合，用于创建 Browser-based 3D BIM applications；核心包和前端包也被明确分开。
+
+------
+
+### IFC 与 Runtime 分离
+
+大型工程模型存在很明细的性能问题，大家逐渐意识到**IFC 不适合作为最终运行时。**
+
+典型链路变为：
+
+```text
+IFC
+     ↓
+Preprocessing
+     ↓
+Runtime Format
+     ↓
+Viewer
+```
+
+这时候出现的核心技术不再只是 Renderer，而是：
+
+```text
+Binary Format
+Worker
+LOD
+Batching
+Instancing
+Spatial Index
+Streaming
+Metadata
+```
+
+That Open 的 Fragments 就是一个典型例子。其内部现在直接包含：`BIM persistence + BIM visualization + IFC importer + Worker runtime + query + edit`。
+
+而 `IfcLoader` 本身只是：`web-ifc → Fragments`的桥接组件。
+
+------
+
+### Scene Graph 与 Data Graph 分离
+
+> **BIM Viewer 正逐渐从“支持工程属性的 3D Engine”，演化成“带三维表达能力的 Engineering Data Runtime”。**
+
+传统 3D Engine，Scene Graph承担一切：
+
+```text
+Node
+ ├─ Mesh
+ ├─ Transform
+ └─ userData
+```
+
+新的 BIM Runtime 越来越强调：Data Graph ≠ Scene Graph，而是：
+
+```text
+Engineering Object
+    │
+    ├── Type
+    ├── Property
+    ├── Relationship
+    │
+    └── Representation
+             │
+             ▼
+         Scene Object
+```
+
+Speckle、BIMserver、iTwin 都可以看成这一趋势向更大系统边界的继续发展。
+
+------
+
+## 三、核心项目介绍
+
+### 1. IfcOpenShell
+
+IfcOpenShell 是 OpenBIM 世界最重要的基础设施之一，提供**BIM 世界的基础数据库内核 + Geometry Kernel**， LGPL 开源。
+
+当前项目包括：
+
+- C++ IFC library；
+- Python API；
+- IfcConvert；
+- geometry engine；
+- Bonsai；
+- IDS tooling；
+- BCF tooling；
+- IFC query / patch 等大量工具。
+
+最值得研究的是两件事：
+
+**第一，IFC Schema 如何映射成程序对象。**
+
+**第二，复杂 IFC Representation 如何变成真正可渲染几何。**
+
+------
+
+### 2. web-ifc
+
+web-ifc 提供 Browser IFC Kernel ，是现代 Web OpenBIM 技术栈非常重要的一块地基，MPL-2.0许可。
+
+如果说 IfcOpenShell 是传统原生 IFC Engine，那么 web-ifc 最大的创新就是：`C++  → WebAssembly  → Browser`，它让 JavaScript 可以直接操作 ifc 文件。
+
+```text
+Open IFC
+Read Entity
+Read Property
+Generate Geometry
+Write IFC
+```
+
+官方同时提供：
+
+- Browser WASM；
+- multithread WASM；
+- Node WASM；
+- TypeScript definitions。
+
+------
+
+### 3. That Open Components + Fragments
+
+That Open 最大特点不是“有一个很好看的 Viewer”，而是形成完整的 Web BIM SDK + Runtime 技术栈，采用 MIT 许可。官方将其定义为用于高效保存、显示、导航和编辑大规模 BIM 数据的开源库。
+
+```text
+             web-ifc
+                │
+                ▼
+            IFC Loader
+                │
+                ▼
+            Fragments
+                │
+                ▼
+      That Open Components
+                │
+                ▼
+             Three.js
+```
+
+Components负责：
+
+```text
+Scene
+Camera
+Renderer
+Selection
+Highlight
+Clipping
+Measurement
+Classification
+Properties
+Floorplan
+...
+```
+
+Fragments负责：
+
+```text
+BIM Runtime
++
+Binary Format
++
+Model Persistence
++
+Worker
++
+Streaming
+```
+
+------
+
+### 4. xeokit SDK + xeokit-bim-viewer
+
+官方定义：open source 2D/3D BIM viewer that runs in the browser，采用AGPL-3.0许可。
+
+典型链路：
+
+```text
+Fork repository
+ ↓
+Convert IFC
+ ↓
+放入 data
+ ↓
+Serve
+```
+
+核心功能：
+
+```text
+Project
+Model
+Object
+Tree
+Storey
+IFC Type
+Property
+BCF Viewpoint
+Viewer State
+```
+
+------
+
+### 5. BIMserver + BIMsurfer
+
+BIMserver 最大的思想不是 Viewer，而是**IFC Database。**
+
+```text
+IFC
+ ↓
+BIMserver
+ ↓
+BIMsurfer
+```
+
+BIMserver将 IFC 保存为对象，而不是文件，可以：
+
+```text
+Query
+Merge
+Filter
+Version
+Project
+Model Checking
+```
+
+BIMsurfer 则负责 WebGL Viewer。目前 BIMsurfer v3 已经完全重写为 WebGL2，并引入 3D Tiles、section plane、measurement 等方向，但官方仍明确标记v3 beta，尚无正式 release。 
+
+------
+
+### 6. xBIM + XbimXplorer
+
+这是 `.NET / C#` 世界非常完整的一条 BIM 技术路线。整个 xBIM 生态到 2026 年仍然非常活跃，包括 Geometry、WindowsUI、IDS Validator 等项目都仍有更新。许可证采用 CDDL，官方特别说明可以用于 Larger Work，包括闭源商业软件，但修改覆盖文件仍需遵循许可证义务。
+
+```text
+XbimEssentials
+       │
+XbimGeometry
+       │
+XbimWindowsUI
+       │
+XbimXplorer
+```
+
+XbimEssentials 可以：
+
+- read IFC；
+- write IFC；
+- validate；
+- query；
+- 处理 IFC2x3 / IFC4。
+
+XbimXplorer 则是一个完整 WPF BIM Viewer，可以展示三维 IFC 和 semantic data。
+
+------
+
+### 7. Speckle
+
+Speckle 从 BIM Viewer走向 AEC Data Platform，其主仓库直接包含 Server、Frontend、Viewer、ObjectLoader、Preview Service 等，**把工程数据从 File Exchange 转向 Object Exchange。**
+
+其架构更像：
+
+```text
+AEC Applications
+       ↓
+Connectors
+       ↓
+Speckle Objects
+       ↓
+Server
+       ↓
+Version / Project / API
+       ↓
+Web Viewer
+```
+
+------
+
+### 8. iTwin.js：
+
+iTwin.js 进一步迈向数字孪生基础设施（Infrastructure Digital Twin），核心代码采用 MIT License。技术完整度很高，但学习成本也明显更高，因为必须理解 Bentley 自己的 iModel/BIS 数据体系。
+
+```text
+Engineering Models
+Reality Data
+GIS
+IoT
+```
+
+------
+
+### 9. CesiumJS + 3D Tiles
+
+CesiumJS 是**3D Geospatial Engine。**真正和 BIM 技术产生交集的是 3D Tiles，很多大型数字孪生项目最终都会同时出现 BIM Engine 和 Cesium。
+
+```
+建筑内部 → BIM
+
+城市/线路/区域 → GIS / 3D Tiles
+```
+
+3D Tiles 明确面向：
+
+- Photogrammetry；
+- BIM/CAD；
+- 3D Building；
+- Instanced Feature；
+- Point Cloud；
+
+并设计了空间层级、流式加载、LOD 和 Feature Metadata。([GitHub](https://github.com/CesiumGS/3d-tiles?utm_source=chatgpt.com))
+
+------
+
+## 四、总结
+
+**BIM 浏览器不是“支持 IFC 的 Three.js Viewer”，而是一套将工程信息模型转换为可实时运行、可查询、可交互三维工程对象的 Runtime System。**
+
+```text
+                    BIM Browser
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+      Data             Runtime         Interaction
+        │                │                │
+        ▼                ▼                ▼
+ IFC Parser        Binary Format       Picking
+ Geometry Kernel   Streaming           Section
+ Semantic Model    LOD                 Measure
+ Relationship      Spatial Index       Tree
+ Property          Worker              Property
+ Classification    GPU Optimization    BCF
+        │                │                │
+        └────────────────┼────────────────┘
+                         │
+                    3D Rendering
+```
 

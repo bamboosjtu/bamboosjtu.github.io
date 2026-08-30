@@ -19,6 +19,11 @@
       <h4>Web Access Skill</h4>
       <p>联网策略、CDP、登录态与站点经验：Policy / Capability / Runtime / Memory 四层拆解</p>
     </a>
+    <a class="doc-item" href="#/knowledge/fde/web-access-skill">
+      <span class="doc-num">02</span>
+      <h4>OpenCLI Skill</h4>
+      <p>Legacy System → Agent Tool 的开源参考实现</p>
+    </a>
   </div>
 </section>
 
