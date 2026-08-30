@@ -1,0 +1,19 @@
+[project]
+name = "rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cohere>=5.20.7",
+    "dotenv>=0.9.9",
+    "faiss-cpu>=1.13.2",
+    "langchain>=1.2.10",
+    "langchain-community>=0.4.1",
+    "langchain-huggingface>=1.2.1",
+    "langchain-openai>=1.1.10",
+    "numpy>=2.4.2",
+    "pandas>=3.0.1",
+    "sentence-transformers>=5.2.3",
+    "tqdm>=4.67.3",
+]

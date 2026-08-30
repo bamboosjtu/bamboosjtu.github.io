@@ -1,0 +1,12 @@
+__pycache__/
+**/.env
+**/.venv/
+**/logs/
+.playwright-cli/
+.omo/
+
+knowledge/llm/agents/**/*.log
+knowledge/llm/rag/examples/data/
+knowledge/llm/rag/examples/models/
+knowledge/llm/rag/examples/visual_bge/
+knowledge/llm/rag/examples/faiss_index_store/

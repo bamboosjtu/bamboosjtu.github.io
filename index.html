@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>蓝星迭代日志</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="蓝星迭代日志：记录技术、行业与生活中的理解、实践和反思。"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-highlight/prism-line-highlight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <!-- Docsify v4 -->
+    <script>
+      window.$docsify = {
+        name: "蓝星迭代日志",
+        repo: "bamboosjtu/bamboosjtu.github.io",
+        loadSidebar: true,
+        sidebarDisplayLevel: 0,
+        subMaxLevel: 4,
+        coverpage: "cover.md",
+        homepage: "home.md",
+        themeColor: "#2457d6",
+        auto2top: true,
+        mergeNavbar: true,
+        search: {
+          maxAge: 86400000,
+          paths: "auto",
+          placeholder: "搜索研究笔记",
+          noData: "没有找到相关笔记",
+        },
+        mermaid: {
+          theme: "default",
+          startOnLoad: true,
+        },
+      };
+      window.$docsify.plugins = (window.$docsify.plugins || []).concat(
+        function (hook, vm) {
+          hook.doneEach(function () {
+            const sidebar = document.querySelector(".sidebar-nav");
+            if (sidebar) {
+                // 把 "#/path/to/page?id=xx" 归一化成 "/path/to/page"
+                var getLinkPath = function (anchor) {
+                  if (!anchor) return null;
+                  var href = anchor.getAttribute("href") || "";
+                  if (href.indexOf("#") === 0) href = href.slice(1);
+                  var path = href.split("?")[0];
+                  return path === "" ? "/" : path;
+                };
+
+                var currentPath = vm.route.path || "/";
+
+                sidebar.querySelectorAll("li").forEach(function (item) {
+                const children = Array.from(item.children);
+                const link = children.find(function (child) {
+                  return child.tagName === "A";
+                });
+                const nestedList = children.find(function (child) {
+                  return (
+                    child.tagName === "UL" &&
+                    !child.classList.contains("app-sub-sidebar")
+                  );
+                });
+
+                if (!link || !nestedList) return;
+
+                item.classList.add("nav-branch");
+                // docsify 只会给第一个匹配当前路由的 <li> 加 active。
+                // 当多个分支（如行业研究/个人观点/投资观点）都指向同一页面时，
+                // 仅靠 active 类会误判为“不含当前页”而被强制折叠。
+                // 这里额外比较链接本身的路径是否等于当前路由。
+                const containsActivePage =
+                  item.classList.contains("active") ||
+                  Boolean(item.querySelector("li.active")) ||
+                  getLinkPath(link) === currentPath ||
+                  Array.from(item.querySelectorAll("ul a")).some(
+                    function (anchor) {
+                      return (
+                        !anchor.closest(".app-sub-sidebar") &&
+                        getLinkPath(anchor) === currentPath
+                      );
+                    }
+                  );
+
+                if (!containsActivePage) {
+                  item.classList.add("is-collapsed");
+                }
+
+                let toggle = children.find(function (child) {
+                  return child.classList && child.classList.contains("sidebar-branch-toggle");
+                });
+
+                if (!toggle) {
+                  toggle = document.createElement("button");
+                  toggle.className = "sidebar-branch-toggle";
+                  toggle.type = "button";
+                  toggle.setAttribute("aria-label", "展开或收起 " + link.textContent.trim());
+                  item.insertBefore(toggle, nestedList);
+                  toggle.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const collapsed = item.classList.toggle("is-collapsed");
+                    toggle.setAttribute("aria-expanded", String(!collapsed));
+                  });
+                }
+
+                // 点击分支标题本身也能展开/收起：
+                // 若标题指向的就是当前页面，docsify 导航是无操作，
+                // 默认行为表现为“点了没反应”，这里改为切换折叠状态。
+                if (!link.dataset.branchClickBound) {
+                  link.dataset.branchClickBound = "1";
+                  link.addEventListener("click", function (event) {
+                    if (getLinkPath(link) !== currentPath) return;
+                    if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const collapsed = item.classList.toggle("is-collapsed");
+                    toggle.setAttribute("aria-expanded", String(!collapsed));
+                  });
+                }
+
+                toggle.setAttribute(
+                  "aria-expanded",
+                  String(!item.classList.contains("is-collapsed"))
+                );
+              });
+            }
+
+            if (window.__pageTocScrollHandler) {
+              window.removeEventListener(
+                "scroll",
+                window.__pageTocScrollHandler
+              );
+              window.__pageTocScrollHandler = null;
+            }
+
+            const existingToc = document.querySelector(".page-toc");
+            if (existingToc) existingToc.remove();
+            document.body.classList.remove("has-page-toc");
+
+            const article = document.querySelector(".markdown-section");
+            const isHome = vm.route.path === "/";
+            const headings = article
+              ? Array.from(article.querySelectorAll("h2[id], h3[id]"))
+              : [];
+
+            if (!isHome && article && headings.length >= 2) {
+              const toc = document.createElement("aside");
+              toc.className = "page-toc";
+              toc.setAttribute("aria-label", "文章大纲");
+
+              const tocLabel = document.createElement("span");
+              tocLabel.className = "page-toc__label";
+              tocLabel.textContent = "文章大纲";
+
+              const tocNav = document.createElement("nav");
+              tocNav.className = "page-toc__nav";
+
+              const links = headings.map(function (heading) {
+                const link = document.createElement("a");
+                const anchor = heading.querySelector("a.anchor");
+                link.href = anchor
+                  ? anchor.getAttribute("href")
+                  : window.location.hash.split("?id=")[0] + "?id=" + heading.id;
+                link.textContent = heading.textContent.trim();
+                link.className =
+                  heading.tagName === "H3" ? "page-toc__level-3" : "page-toc__level-2";
+                tocNav.appendChild(link);
+                return link;
+              });
+
+              toc.appendChild(tocLabel);
+              toc.appendChild(tocNav);
+              document.querySelector(".content").appendChild(toc);
+              document.body.classList.add("has-page-toc");
+
+              const updateActiveHeading = function () {
+                let activeIndex = 0;
+                headings.forEach(function (heading, index) {
+                  if (heading.getBoundingClientRect().top <= 150) {
+                    activeIndex = index;
+                  }
+                });
+                links.forEach(function (link, index) {
+                  link.classList.toggle("is-active", index === activeIndex);
+                });
+              };
+
+              window.__pageTocScrollHandler = updateActiveHeading;
+              window.addEventListener("scroll", updateActiveHeading, {
+                passive: true,
+              });
+              updateActiveHeading();
+            }
+
+            // docsify 每次渲染/切页后触发
+            if (typeof renderMathInElement === "function") {
+              // 建议只渲染 docsify 的内容区域，避免污染侧边栏等
+              const el = document.querySelector(".content") || document.body;
+
+              renderMathInElement(el, {
+                delimiters: [
+                  { left: "$$", right: "$$", display: true },
+                  { left: "$", right: "$", display: false },
+                  { left: "\\(", right: "\\)", display: false },
+                  { left: "\\[", right: "\\]", display: true },
+                ],
+                throwOnError: false,
+                // 可选：减少误伤
+                ignoredTags: [
+                  "script",
+                  "noscript",
+                  "style",
+                  "textarea",
+                  "pre",
+                  "code",
+                ],
+              });
+            }
+          });
+        }
+      );
+    </script>
+    <!-- Docsify 核心 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+    <!-- 官方插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+
+    <!-- Prism 高亮 -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-clike.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+
+    <!-- KaTeX 核心 -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <!-- 自动渲染插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  </body>
+</html>
