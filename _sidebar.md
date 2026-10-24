@@ -16,6 +16,8 @@
   - [AI是第四次工业革命吗](research/personal-view/ai-4th-industry-revolution)
   - [企业Agent撞上旧系统](research/personal-view/legacy-system-mcp)
   - [视觉AI进入生产现场](research/personal-view/ai-in-production)
+  - [本体论or数据中台外包商](research/personal-view/palantir-or-data-platform-vendor)
+  - [谁才是数据治理的主角](research/personal-view/no-pay-no-data-asset)
 - [投资观点](research/invest-strategy/index)
   - [分散资产配置](research/invest-strategy/asset-allocation)
 

@@ -3,7 +3,7 @@
   <h1>个人<em>观点</em></h1>
   <p class="cat-tagline">对热门叙事的独立审视。</p>
   <p class="cat-intro">
-    这里是带着立场的结论，等着被反驳。每篇都从可核查的数据出发，检验一个正在流行的判断。
+    不喜欢宏大叙事，也不喜欢人云亦云，带着逻辑来点批判性思考。
   </p>
 </header>
 
@@ -37,6 +37,38 @@
     <span class="post-row-main">
       <span class="post-row-title">AI是第四次工业革命吗</span>
       <span class="post-excerpt">供给端已现工业革命级景象，需求端尚未跟上——AI 离全行业渗透还有多远。</span>
+    </span>
+    <span class="post-row-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="post-row" href="#/research/personal-view/legacy-system-mcp">
+    <span class="post-row-index">05</span>
+    <span class="post-row-main">
+      <span class="post-row-title">企业Agent撞上旧系统</span>
+      <span class="post-excerpt">企业 agent 最终都会走向旧系统，探讨浏览器操作、API、MCP和权限审计。</span>
+    </span>
+    <span class="post-row-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="post-row" href="#/research/personal-view/ai-in-production">
+    <span class="post-row-index">06</span>
+    <span class="post-row-main">
+      <span class="post-row-title">视觉AI进入生产现场</span>
+      <span class="post-excerpt">不从样本和标注开始的视觉识别都是骗子。</span>
+    </span>
+    <span class="post-row-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="post-row" href="#/research/personal-view/palantir-or-data-platform-vendor">
+    <span class="post-row-index">07</span>
+    <span class="post-row-main">
+      <span class="post-row-title">本体论or数据中台外包商</span>
+      <span class="post-excerpt">国产 Palantir？还是会说本体论的数据中台外包商。</span>
+    </span>
+    <span class="post-row-arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="post-row" href="#/research/personal-view/no-pay-no-data-asset">
+    <span class="post-row-index">08</span>
+    <span class="post-row-main">
+      <span class="post-row-title">谁才是数据治理的主角</span>
+      <span class="post-excerpt">舍得几百万搞数据治理，却总想白嫖业务专家。</span>
     </span>
     <span class="post-row-arrow" aria-hidden="true">→</span>
   </a>
