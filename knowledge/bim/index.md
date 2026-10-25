@@ -9,9 +9,9 @@
 
 
 <section class="home-section" style="margin-top: 0;">
-  <div class="section-kicker">NOTES</div>
+  <div class="section-kicker">01 · FOUNDATION</div>
   <div class="section-heading">
-    <h2>笔记目录</h2>
+    <h2>BIM 标准</h2>
     <p>从标准体系到工程实现，建立 BIM 的完整技术地图。</p>
   </div>
   <div class="doc-grid">
@@ -33,3 +33,17 @@
     </div>
 </section>
 
+<section class="home-section">
+  <div class="section-kicker">02 · 开源BIM框架</div>
+  <div class="section-heading">
+    <h2>ThatOpen</h2>
+    <p>一组用于开发 BIM 应用的 JavaScript / TypeScript 库。</p>
+  </div>
+  <div class="doc-grid">
+    <a class="doc-item" href="#/knowledge/bim/thatopen/intro">
+      <span class="doc-num">01</span>
+      <h4>新手入门</h4>
+      <p>第一个 3D World。</p>
+    </a>
+  </div>
+</section>

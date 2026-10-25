@@ -50,6 +50,8 @@
   - [BIM学习地图](knowledge/bim/introduction)
   - [BIM标准体系](knowledge/bim/standard)
   - [开源BIM技术生态](knowledge/bim/opensource)
+  - **ThanOpen**
+    - [新手入门](knowledge/bim/thatopen/intro)
 - [逆向工程](knowledge/web-automation/index)
   - [Web 基础知识](knowledge/web-automation/web-basics)
   - [瑞数6初探](knowledge/web-automation/ruishu6-notes)
