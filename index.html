@@ -43,6 +43,8 @@
         name: "蓝星迭代日志",
         repo: "bamboosjtu/bamboosjtu.github.io",
         loadSidebar: true,
+        // Revalidate Markdown after deployments instead of reusing a stale HTTP response.
+        requestHeaders: { "Cache-Control": "no-cache" },
         sidebarDisplayLevel: 0,
         subMaxLevel: 4,
         coverpage: "cover.md",
@@ -62,22 +64,11 @@
           hook.doneEach(function () {
             const sidebar = document.querySelector(".sidebar-nav");
             if (sidebar) {
-                // 把 "#/path/to/page?id=xx" 归一化成 "/path/to/page"
-                var getLinkPath = function (anchor) {
-                  if (!anchor) return null;
-                  var href = anchor.getAttribute("href") || "";
-                  if (href.indexOf("#") === 0) href = href.slice(1);
-                  var path = href.split("?")[0];
-                  return path === "" ? "/" : path;
-                };
-
-                var currentPath = vm.route.path || "/";
 
                 sidebar.querySelectorAll("li").forEach(function (item) {
                 const children = Array.from(item.children);
-                const link = children.find(function (child) {
-                  return child.tagName === "A";
-                });
+                // Marked wraps links in <p> when a Markdown list is loose.
+                const link = item.querySelector(":scope > a, :scope > p > a");
                 const nestedList = children.find(function (child) {
                   return (
                     child.tagName === "UL" &&
@@ -88,26 +79,8 @@
                 if (!link || !nestedList) return;
 
                 item.classList.add("nav-branch");
-                // docsify 只会给第一个匹配当前路由的 <li> 加 active。
-                // 当多个分支（如行业研究/个人观点/投资观点）都指向同一页面时，
-                // 仅靠 active 类会误判为“不含当前页”而被强制折叠。
-                // 这里额外比较链接本身的路径是否等于当前路由。
-                const containsActivePage =
-                  item.classList.contains("active") ||
-                  Boolean(item.querySelector("li.active")) ||
-                  getLinkPath(link) === currentPath ||
-                  Array.from(item.querySelectorAll("ul a")).some(
-                    function (anchor) {
-                      return (
-                        !anchor.closest(".app-sub-sidebar") &&
-                        getLinkPath(anchor) === currentPath
-                      );
-                    }
-                  );
-
-                if (!containsActivePage) {
-                  item.classList.add("is-collapsed");
-                }
+                // Every branch starts expanded. Only the explicit toggle changes it.
+                // Do not overwrite a user's toggle when doneEach runs again.
 
                 let toggle = children.find(function (child) {
                   return child.classList && child.classList.contains("sidebar-branch-toggle");
@@ -127,20 +100,6 @@
                   });
                 }
 
-                // 点击分支标题本身也能展开/收起：
-                // 若标题指向的就是当前页面，docsify 导航是无操作，
-                // 默认行为表现为“点了没反应”，这里改为切换折叠状态。
-                if (!link.dataset.branchClickBound) {
-                  link.dataset.branchClickBound = "1";
-                  link.addEventListener("click", function (event) {
-                    if (getLinkPath(link) !== currentPath) return;
-                    if (event.metaKey || event.ctrlKey || event.shiftKey) return;
-                    event.preventDefault();
-                    event.stopPropagation();
-                    const collapsed = item.classList.toggle("is-collapsed");
-                    toggle.setAttribute("aria-expanded", String(!collapsed));
-                  });
-                }
 
                 toggle.setAttribute(
                   "aria-expanded",
