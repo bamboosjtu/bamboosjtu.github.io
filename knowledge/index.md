@@ -38,7 +38,7 @@
 <section class="home-section">
   <div class="section-kicker">02 ·工程相关</div>
   <div class="section-heading">
-    <h2>数智建造</h2>
+    <h2 id="数智建造">数智建造</h2>
     <p>让工程信息可计算、可协同、可交付。</p>
   </div>
   <div class="line-grid cols-3">
