@@ -34,52 +34,21 @@
 </section>
 
 <section class="home-section">
-  <div class="section-kicker">02 · 开源BIM框架</div>
+  <div class="section-kicker">02 · RELATED FIELDS</div>
   <div class="section-heading">
-    <h2>ThatOpen</h2>
-    <p>一组用于开发 BIM 应用的 JavaScript / TypeScript 库。</p>
-  </div>
-  <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/bim/thatopen/intro">
-      <span class="doc-num">01</span>
-      <h4>新手入门</h4>
-      <p>第一个 3D World。</p>
-    </a>
-  </div>
-</section>
-
-
-<section class="home-section">
-  <div class="section-kicker">03 · COMPUTER GRAPHICS</div>
-  <div class="section-heading">
-    <h2>计算机图形</h2>
-    <p>从变换与投影开始，依次理解光栅化、着色、几何与阴影。</p>
+    <h2>数智建造 · 相关领域</h2>
+    <p>计算机图形学与 That Open 是数智建造下与 BIM 相关并列的独立栏目。</p>
   </div>
   <div class="doc-grid">
     <a class="doc-item" href="#/knowledge/bim/computer-graphics/index">
       <span class="doc-num">01</span>
-      <h4>变换与投影</h4>
-      <p>齐次坐标、模型与观察变换、透视与正交投影。</p>
+      <h4>计算机图形学</h4>
+      <p>变换与投影、光栅化、着色、几何表示与阴影。</p>
     </a>
-    <a class="doc-item" href="#/knowledge/bim/computer-graphics/threejs-rendering-basics">
+    <a class="doc-item" href="#/knowledge/bim/thatopen/intro">
       <span class="doc-num">02</span>
-      <h4>光栅化与抗锯齿</h4>
-      <p>三角形覆盖、深度缓冲、采样与抗锯齿。</p>
-    </a>
-    <a class="doc-item" href="#/knowledge/bim/computer-graphics/materials-and-textures">
-      <span class="doc-num">03</span>
-      <h4>着色与纹理</h4>
-      <p>局部光照、着色频率、UV 与纹理过滤。</p>
-    </a>
-    <a class="doc-item" href="#/knowledge/bim/computer-graphics/geometry-and-surfaces">
-      <span class="doc-num">04</span>
-      <h4>几何表示与曲面</h4>
-      <p>隐式与显式表示、Bézier 曲线、网格处理。</p>
-    </a>
-    <a class="doc-item" href="#/knowledge/bim/computer-graphics/light-and-shadow">
-      <span class="doc-num">05</span>
-      <h4>可见性与阴影</h4>
-      <p>阴影映射、深度比较、过滤与光照边界。</p>
+      <h4>That Open</h4>
+      <p>使用开源 JavaScript / TypeScript 库构建 Web BIM 应用。</p>
     </a>
   </div>
 </section>

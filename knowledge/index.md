@@ -41,12 +41,24 @@
     <h2>数智建造</h2>
     <p>让工程信息可计算、可协同、可交付。</p>
   </div>
-  <div class="line-grid cols-1">
+  <div class="line-grid cols-3">
     <a class="line-item" href="#/knowledge/bim/index">
       <span class="line-number">01</span>
-      <h3>BIM</h3>
+      <h3>BIM 相关</h3>
       <p>从实体交付需求到数字化交付，理解 BIM 标准、模型和协同机制。</p>
-          <span class="line-link">进入BIM世界→</span>
+      <span class="line-link">进入 BIM 世界 →</span>
+    </a>
+    <a class="line-item" href="#/knowledge/bim/computer-graphics/index">
+      <span class="line-number">02</span>
+      <h3>计算机图形学</h3>
+      <p>从变换与投影开始，理解光栅化、着色、几何表示与阴影。</p>
+      <span class="line-link">探索图形原理 →</span>
+    </a>
+    <a class="line-item" href="#/knowledge/bim/thatopen/intro">
+      <span class="line-number">03</span>
+      <h3>That Open</h3>
+      <p>使用开源 JavaScript / TypeScript 库，构建 Web BIM 应用。</p>
+      <span class="line-link">开始开发 →</span>
     </a>
   </div>
 </section>
