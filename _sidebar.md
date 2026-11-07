@@ -50,6 +50,10 @@
   - [BIM学习地图](knowledge/bim/introduction)
   - [BIM标准体系](knowledge/bim/standard)
   - [开源BIM技术生态](knowledge/bim/opensource)
+  - [计算机图形](knowledge/bim/computer-graphics/index)
+    - [Three.js 为什么这样拆](knowledge/bim/computer-graphics/threejs-rendering-basics)
+    - [材质与贴图的职责](knowledge/bim/computer-graphics/materials-and-textures)
+    - [光照与阴影的边界](knowledge/bim/computer-graphics/light-and-shadow)
   - **ThanOpen**
     - [新手入门](knowledge/bim/thatopen/intro)
 - [逆向工程](knowledge/web-automation/index)
@@ -62,3 +66,4 @@
 ## 资料来源
 
 - [课程与资料来源](courses)
+

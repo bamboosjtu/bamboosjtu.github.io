@@ -47,3 +47,34 @@
     </a>
   </div>
 </section>
+
+
+<section class="home-section">
+  <div class="section-kicker">03 · COMPUTER GRAPHICS</div>
+  <div class="section-heading">
+    <h2>计算机图形</h2>
+    <p>从图形学原理理解 Three.js 的抽象，串起几何、材质、采样、光照与阴影。</p>
+  </div>
+  <div class="doc-grid">
+    <a class="doc-item" href="#/knowledge/bim/computer-graphics/index">
+      <span class="doc-num">01</span>
+      <h4>学习笔记总览</h4>
+      <p>从实际困惑出发，用简单场景检验概念。</p>
+    </a>
+    <a class="doc-item" href="#/knowledge/bim/computer-graphics/threejs-rendering-basics">
+      <span class="doc-num">02</span>
+      <h4>Three.js 为什么这样拆</h4>
+      <p>从 Geometry、Material、Texture 到屏幕像素。</p>
+    </a>
+    <a class="doc-item" href="#/knowledge/bim/computer-graphics/materials-and-textures">
+      <span class="doc-num">03</span>
+      <h4>材质与贴图的职责</h4>
+      <p>数据、规则、表面细节与采样。</p>
+    </a>
+    <a class="doc-item" href="#/knowledge/bim/computer-graphics/light-and-shadow">
+      <span class="doc-num">04</span>
+      <h4>光照与阴影的边界</h4>
+      <p>可见性、Shadow Map、烘焙与假阴影。</p>
+    </a>
+  </div>
+</section>
