@@ -26,13 +26,13 @@
   <div class="section-kicker">02 · ZI PING ASTROLOGY</div>
   <div class="section-heading">
     <h2>子平命理</h2>
-    <p>干支五行如何刻画人生节律，这套模型的边界在哪里？</p>
+    <p>从干支关系到月令格局，按《子平真诠》篇序梳理概念与推演边界。</p>
   </div>
   <div class="doc-grid cols-1">
     <a class="doc-item" href="#/knowledge/traditional/ziping">
       <span class="doc-num">01</span>
-      <h4>子平命理</h4>
-      <p>四柱排盘、十神格局与大运流年的分析体系</p>
+      <h4>子平命理 · 论十干十二支</h4>
+      <p>从第一篇开始阅读，侧栏依次展开十一篇：干支、生克、刑冲会合、用神与成败救应。</p>
     </a>
   </div>
 </section>

@@ -65,6 +65,21 @@
   - [金融数据包概览](knowledge/quant/finance-data)
   - [akshare 包](knowledge/quant/akshare)
 
+- [传统文化](knowledge/traditional/index)
+  - [易经八卦](knowledge/traditional/iching)
+  - [子平命理](knowledge/traditional/ziping)
+    - [01 论十干十二支](knowledge/traditional/ziping)
+    - [02 论阴阳生克](knowledge/traditional/ziping/yin-yang-and-ten-gods)
+    - [03 论阴阳生死](knowledge/traditional/ziping/twelve-stages)
+    - [04 论十干配合性情](knowledge/traditional/ziping/heavenly-stem-combinations)
+    - [05 论十干合而不合](knowledge/traditional/ziping/conditions-of-combination)
+    - [06 论十干得时不旺失时不弱](knowledge/traditional/ziping/season-roots-and-strength)
+    - [07 论刑冲会合解法](knowledge/traditional/ziping/branch-interactions)
+    - [08 论用神](knowledge/traditional/ziping/month-command-and-useful-god)
+    - [09 论用神成败救应](knowledge/traditional/ziping/formation-failure-and-rescue)
+    - [10 论用神变化](knowledge/traditional/ziping/changes-of-useful-god)
+    - [11 论用神纯杂](knowledge/traditional/ziping/purity-and-mixture)
+
 ## 资料来源
 
 - [课程与资料来源](courses)
