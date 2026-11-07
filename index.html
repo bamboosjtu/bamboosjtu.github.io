@@ -56,10 +56,6 @@
           placeholder: "搜索研究笔记",
           noData: "没有找到相关笔记",
         },
-        mermaid: {
-          theme: "default",
-          startOnLoad: true,
-        },
       };
       window.$docsify.plugins = (window.$docsify.plugins || []).concat(
         function (hook, vm) {
@@ -248,15 +244,23 @@
         }
       );
     </script>
+    <!-- Mermaid 先注册插件，再启动 Docsify；由切页钩子渲染，避免重复扫描。 -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "default",
+        flowchart: { htmlLabels: false },
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+
     <!-- Docsify 核心 -->
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 
     <!-- 官方插件 -->
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-
-    <!-- Mermaid -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 
     <!-- Prism 高亮 -->
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
@@ -272,3 +276,4 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   </body>
 </html>
+

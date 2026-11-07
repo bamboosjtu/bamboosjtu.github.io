@@ -53,28 +53,33 @@
   <div class="section-kicker">03 · COMPUTER GRAPHICS</div>
   <div class="section-heading">
     <h2>计算机图形</h2>
-    <p>从图形学原理理解 Three.js 的抽象，串起几何、材质、采样、光照与阴影。</p>
+    <p>从变换与投影开始，依次理解光栅化、着色、几何与阴影。</p>
   </div>
   <div class="doc-grid">
     <a class="doc-item" href="#/knowledge/bim/computer-graphics/index">
       <span class="doc-num">01</span>
-      <h4>学习笔记总览</h4>
-      <p>从实际困惑出发，用简单场景检验概念。</p>
+      <h4>变换与投影</h4>
+      <p>齐次坐标、模型与观察变换、透视与正交投影。</p>
     </a>
     <a class="doc-item" href="#/knowledge/bim/computer-graphics/threejs-rendering-basics">
       <span class="doc-num">02</span>
-      <h4>Three.js 为什么这样拆</h4>
-      <p>从 Geometry、Material、Texture 到屏幕像素。</p>
+      <h4>光栅化与抗锯齿</h4>
+      <p>三角形覆盖、深度缓冲、采样与抗锯齿。</p>
     </a>
     <a class="doc-item" href="#/knowledge/bim/computer-graphics/materials-and-textures">
       <span class="doc-num">03</span>
-      <h4>材质与贴图的职责</h4>
-      <p>数据、规则、表面细节与采样。</p>
+      <h4>着色与纹理</h4>
+      <p>局部光照、着色频率、UV 与纹理过滤。</p>
+    </a>
+    <a class="doc-item" href="#/knowledge/bim/computer-graphics/geometry-and-surfaces">
+      <span class="doc-num">04</span>
+      <h4>几何表示与曲面</h4>
+      <p>隐式与显式表示、Bézier 曲线、网格处理。</p>
     </a>
     <a class="doc-item" href="#/knowledge/bim/computer-graphics/light-and-shadow">
-      <span class="doc-num">04</span>
-      <h4>光照与阴影的边界</h4>
-      <p>可见性、Shadow Map、烘焙与假阴影。</p>
+      <span class="doc-num">05</span>
+      <h4>可见性与阴影</h4>
+      <p>阴影映射、深度比较、过滤与光照边界。</p>
     </a>
   </div>
 </section>

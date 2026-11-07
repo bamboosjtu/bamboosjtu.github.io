@@ -1233,3 +1233,18 @@ section.cover .cover-main {
   font-size: 0.8rem;
   white-space: nowrap;
 }
+
+/* Diagrams stay readable without widening the article on small screens. */
+.markdown-section .mermaid {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.markdown-section .mermaid svg {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+}
