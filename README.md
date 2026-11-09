@@ -14,13 +14,18 @@
 
 ```text
 knowledge/
-├─ llm/                    # 模型基础、提示词工程、LLM Agent、RAG
+├─ index.md                # 知识体系总览：AI、工程、投资、传统文化
+├─ llm/                    # LLM 原理：大模型、智能体、知识库
 ├─ fde/                    # 数字分身：用 AI 操作真实系统
 ├─ embodied/               # 具身智能
-├─ web-automation/         # 浏览器、HTTP、测试与采集（逆向工程）
+├─ bim/                    # BIM 标准：学习地图、标准体系、开源生态
+├─ computer-graphics/      # 计算机图形学
 ├─ quant/                  # 量化分析：金融数据与研究方法
-├─ traditional/            # 传统文化：易经八卦、子平命理
-└─ health/                 # 运动能力与健康状态
+└─ ziping/                 # 子平命理：原书篇序的六篇笔记
 ```
+
+目录层级与 `knowledge/index.md` 的板块顺序一致：每个栏目占一个目录，目录内的 `index.md` 是该栏目的总览；文章多时可按主题再分一层子目录（如 `llm/agents/`）。文章文件统一命名为 `序号-篇名`（如 `01-Transformer架构.md`），序号即栏目内的阅读顺序。
+
+总览页里的「投资相关」「传统文化」只是板块名称，不单独建目录：对应栏目分别是 `quant/` 与 `ziping/`。
 
 新增课程时，不创建课程目录。先判断它研究的对象，再把有效内容归入相应领域；课程名称只记录在 `references/`。

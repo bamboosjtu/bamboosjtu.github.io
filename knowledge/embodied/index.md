@@ -14,7 +14,7 @@
     <p>技术栈、信息流与三个代表项目。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/embodied/embodied-intelligence">
+    <a class="doc-item" href="#/knowledge/embodied/01-从视频到机器人动作">
       <span class="doc-num">01</span>
       <h4>从视频到机器人动作</h4>
       <p>八层技术栈全景 + video2robot / PromptHMR / GMR 项目研究</p>

@@ -14,12 +14,12 @@
     <p>学习优秀 skill 的设计：策略、能力、运行时与经验如何分层。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/fde/web-access-skill">
+    <a class="doc-item" href="#/knowledge/fde/01-Web-Access-Skill">
       <span class="doc-num">01</span>
       <h4>Web Access Skill</h4>
       <p>联网策略、CDP、登录态与站点经验：Policy / Capability / Runtime / Memory 四层拆解</p>
     </a>
-    <a class="doc-item" href="#/knowledge/fde/web-access-skill">
+    <a class="doc-item" href="#/knowledge/fde/02-OpenCLI-Skill">
       <span class="doc-num">02</span>
       <h4>OpenCLI Skill</h4>
       <p>Legacy System → Agent Tool 的开源参考实现</p>
@@ -39,6 +39,6 @@
   <div class="section-kicker">03 · HARNESS ENGINEERING</div>
   <div class="section-heading">
     <h2>Harness 工程</h2>
-    <p>研究各种 Agent 的 harness 思路：OpenCode 的 build/plan 分权、Pi 的最小提示词哲学、Claude Code 的上下文约定。相关背景见<a href="#/knowledge/llm/agents/agent-principles">智能体的原理</a>与<a href="#/knowledge/llm/agents/agent-evolution">智能体的演进</a>。</p>
+    <p>研究各种 Agent 的 harness 思路：OpenCode 的 build/plan 分权、Pi 的最小提示词哲学、Claude Code 的上下文约定。相关背景见<a href="#/knowledge/llm/agents/01-智能体的原理">智能体的原理</a>与<a href="#/knowledge/llm/agents/05-智能体的演进">智能体的演进</a>。</p>
   </div>
 </section>

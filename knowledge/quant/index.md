@@ -14,12 +14,12 @@
     <p>研究的地基：可复现的数据管线。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/quant/finance-data">
+    <a class="doc-item" href="#/knowledge/quant/01-金融数据包概览">
       <span class="doc-num">01</span>
       <h4>金融数据包概览</h4>
       <p>行情、基本面与另类数据的数据源地图</p>
     </a>
-    <a class="doc-item" href="#/knowledge/quant/akshare">
+    <a class="doc-item" href="#/knowledge/quant/02-akshare包">
       <span class="doc-num">02</span>
       <h4>akshare 包</h4>
       <p>按研究流程组织的八类接口 + 十层数据架构观</p>

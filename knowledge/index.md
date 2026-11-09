@@ -36,52 +36,30 @@
   </div>
 </section>
 <section class="home-section">
-  <div class="section-kicker">02 ·工程相关</div>
+  <div class="section-kicker">02 · ENGINEERING</div>
   <div class="section-heading">
-    <h2 id="数智建造">数智建造</h2>
+    <h2>工程相关</h2>
     <p>让工程信息可计算、可协同、可交付。</p>
   </div>
-  <div class="line-grid cols-3">
+  <div class="line-grid cols-2">
     <a class="line-item" href="#/knowledge/bim/index">
       <span class="line-number">01</span>
-      <h3>BIM 相关</h3>
+      <h3>BIM 标准</h3>
       <p>从实体交付需求到数字化交付，理解 BIM 标准、模型和协同机制。</p>
       <span class="line-link">进入 BIM 世界 →</span>
     </a>
-    <a class="line-item" href="#/knowledge/bim/computer-graphics/index">
+    <a class="line-item" href="#/knowledge/computer-graphics/index">
       <span class="line-number">02</span>
       <h3>计算机图形学</h3>
       <p>从变换与投影开始，理解光栅化、着色、几何表示与阴影。</p>
       <span class="line-link">探索图形原理 →</span>
     </a>
-    <a class="line-item" href="#/knowledge/bim/thatopen/intro">
-      <span class="line-number">03</span>
-      <h3>That Open</h3>
-      <p>使用开源 JavaScript / TypeScript 库，构建 Web BIM 应用。</p>
-      <span class="line-link">开始开发 →</span>
-    </a>
   </div>
 </section>
 
 
 <section class="home-section">
-  <div class="section-kicker">03 · COMPUTER SCIENCE</div>
-  <div class="section-heading">
-    <h2>计算机相关</h2>
-    <p>读懂系统规则，然后改变信息流。</p>
-  </div>
-  <div class="line-grid cols-1">
-    <a class="line-item" href="#/knowledge/web-automation/index">
-      <span class="line-number">01</span>
-      <h3>逆向工程</h3>
-      <p>如何读懂协议与页面背后的机制，实现稳定的采集与自动化？</p>
-      <span class="line-link">进入控制台 →</span>
-    </a>
-  </div>
-</section>
-
-<section class="home-section">
-  <div class="section-kicker">04 · INVESTING</div>
+  <div class="section-kicker">03 · INVESTING</div>
   <div class="section-heading">
     <h2>投资相关</h2>
     <p>在不确定性中建立可解释、可复盘的方法。</p>
@@ -97,20 +75,14 @@
 </section>
 
 <section class="home-section">
-  <div class="section-kicker">05 · ANCIENT WISDOM</div>
+  <div class="section-kicker">04 · ANCIENT WISDOM</div>
   <div class="section-heading">
     <h2>传统文化</h2>
-    <p>古老的符号系统，作为理解变化与节律的思维模型。</p>
+    <p>以干支符号理解节律，也讨论这套模型的解释边界。</p>
   </div>
-  <div class="line-grid cols-2">
-    <a class="line-item" href="#/knowledge/traditional/iching">
+  <div class="line-grid cols-1">
+    <a class="line-item" href="#/knowledge/ziping/index">
       <span class="line-number">01</span>
-      <h3>易经八卦</h3>
-      <p>阴阳消长与卦象变化，如何成为一种决策与思维的框架？</p>
-      <span class="line-link">进入卦象 →</span>
-    </a>
-    <a class="line-item" href="#/knowledge/traditional/ziping">
-      <span class="line-number">02</span>
       <h3>子平命理</h3>
       <p>干支五行如何刻画人生节律，这套模型的边界在哪里？</p>
       <span class="line-link">进入命理 →</span>

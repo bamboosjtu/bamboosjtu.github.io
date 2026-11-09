@@ -15,27 +15,27 @@
     <p>架构、接口与使用方法。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/llm/foundations/transformers">
+    <a class="doc-item" href="#/knowledge/llm/foundations/01-Transformer架构">
       <span class="doc-num">01</span>
       <h4>Transformer 架构</h4>
       <p>注意力、编码结构与基础实现</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/foundations/multimodal-embeddings">
+    <a class="doc-item" href="#/knowledge/llm/foundations/02-多模态Embedding">
       <span class="doc-num">02</span>
       <h4>多模态 Embedding</h4>
       <p>Visualized-BGE：图文同一向量空间</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/foundations/model-apis">
+    <a class="doc-item" href="#/knowledge/llm/foundations/03-OpenAI兼容API">
       <span class="doc-num">03</span>
       <h4>OpenAI 兼容 API</h4>
       <p>一套 SDK 调用所有模型，迁移零成本</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/foundations/model-gateways">
+    <a class="doc-item" href="#/knowledge/llm/foundations/04-本地模型网关">
       <span class="doc-num">04</span>
       <h4>本地模型网关</h4>
       <p>LiteLLM、cc-switch、sub2api 与直连配置</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/foundations/prompt-engineering">
+    <a class="doc-item" href="#/knowledge/llm/foundations/05-提示词工程">
       <span class="doc-num">05</span>
       <h4>提示词工程</h4>
       <p>结构化框架、PRD 与上下文思维</p>
@@ -50,27 +50,27 @@
     <p>模型负责想，系统负责记、看、做。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/llm/agents/agent-principles">
+    <a class="doc-item" href="#/knowledge/llm/agents/01-智能体的原理">
       <span class="doc-num">01</span>
       <h4>智能体的原理</h4>
       <p>大脑隐喻、harness 与四种经典范式</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/agents/agent-execution">
+    <a class="doc-item" href="#/knowledge/llm/agents/02-智能体的执行">
       <span class="doc-num">02</span>
       <h4>智能体的执行</h4>
       <p>工具调用、MCP 协议与 Skills 实战</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/agents/agent-memory">
+    <a class="doc-item" href="#/knowledge/llm/agents/03-智能体的记忆">
       <span class="doc-num">03</span>
       <h4>智能体的记忆</h4>
       <p>四类记忆分类、Pi 案例、memory.md 实践</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/agents/agent-evaluation">
+    <a class="doc-item" href="#/knowledge/llm/agents/04-智能体的评估">
       <span class="doc-num">04</span>
       <h4>智能体的评估</h4>
       <p>可观测性、错误分析与回归集</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/agents/agent-evolution">
+    <a class="doc-item" href="#/knowledge/llm/agents/05-智能体的演进">
       <span class="doc-num">05</span>
       <h4>智能体的演进</h4>
       <p>产品版图对比与"通用底座 + 专业能力"</p>
@@ -85,17 +85,17 @@
     <p>给模型装上可检索的外部记忆。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" href="#/knowledge/llm/rag/rag-techniques">
+    <a class="doc-item" href="#/knowledge/llm/rag/01-RAG技术">
       <span class="doc-num">01</span>
       <h4>RAG 技术</h4>
       <p>加载分块、索引召回、查询优化全链路</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/rag/graph-rag">
+    <a class="doc-item" href="#/knowledge/llm/rag/02-GraphRAG">
       <span class="doc-num">02</span>
       <h4>GraphRAG</h4>
       <p>知识图谱增强的多跳推理与全局问答</p>
     </a>
-    <a class="doc-item" href="#/knowledge/llm/rag/langchain">
+    <a class="doc-item" href="#/knowledge/llm/rag/03-LangChain框架">
       <span class="doc-num">03</span>
       <h4>LangChain 框架</h4>
       <p>RAG 组件工具箱：Loader/Splitter/VectorStore</p>

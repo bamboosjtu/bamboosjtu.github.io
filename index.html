@@ -79,8 +79,9 @@
                 if (!link || !nestedList) return;
 
                 item.classList.add("nav-branch");
-                // Every branch starts expanded. Only the explicit toggle changes it.
-                // Do not overwrite a user's toggle when doneEach runs again.
+                // 默认折叠：分支首次创建时收起；用户点开后把状态写进 sessionStorage，
+                // 同一会话内切页（doneEach 再次执行）不会被重新折叠。
+                // 已存在的分支不覆盖用户当前的选择。
 
                 let toggle = children.find(function (child) {
                   return child.classList && child.classList.contains("sidebar-branch-toggle");
@@ -92,11 +93,30 @@
                   toggle.type = "button";
                   toggle.setAttribute("aria-label", "展开或收起 " + link.textContent.trim());
                   item.insertBefore(toggle, nestedList);
+
+                  const branchKey =
+                    "sidebar-branch:" + (link.getAttribute("href") || link.textContent.trim());
+                  let stored = null;
+
+                  try {
+                    stored = window.sessionStorage.getItem(branchKey);
+                  } catch (error) {
+                    stored = null;
+                  }
+
+                  item.classList.toggle("is-collapsed", stored === null || stored === "1");
+
                   toggle.addEventListener("click", function (event) {
                     event.preventDefault();
                     event.stopPropagation();
                     const collapsed = item.classList.toggle("is-collapsed");
                     toggle.setAttribute("aria-expanded", String(!collapsed));
+
+                    try {
+                      window.sessionStorage.setItem(branchKey, collapsed ? "1" : "0");
+                    } catch (error) {
+                      // 隐私模式无法写入会话存储时，仅保留当前页面的折叠状态。
+                    }
                   });
                 }
 
