@@ -21,7 +21,7 @@ knowledge/
 ├─ bim/                    # BIM 标准：学习地图、标准体系、开源生态
 ├─ computer-graphics/      # 计算机图形学
 ├─ quant/                  # 量化分析：金融数据与研究方法
-└─ ziping/                 # 子平命理：原书篇序的六篇笔记
+└─ ziping/                 # 子平命理：《子平真诠》五个主题
 ```
 
 目录层级与 `knowledge/index.md` 的板块顺序一致：每个栏目占一个目录，目录内的 `index.md` 是该栏目的总览；文章多时可按主题再分一层子目录（如 `llm/agents/`）。文章文件统一命名为 `序号-篇名`（如 `01-Transformer架构.md`），序号即栏目内的阅读顺序。

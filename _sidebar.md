@@ -61,12 +61,11 @@
   - [01 金融数据包概览](knowledge/quant/01-金融数据包概览)
   - [02 akshare 包](knowledge/quant/02-akshare包)
 - [子平命理](knowledge/ziping/index)
-  - [01 论十干十二支](knowledge/ziping/01-论十干十二支)
-  - [02 论阴阳生克与阴阳生死](knowledge/ziping/02-论阴阳生克与阴阳生死)
-  - [03 论十干配合与合而不合](knowledge/ziping/03-论十干配合与合而不合)
-  - [04 论十干得时不旺失时不弱](knowledge/ziping/04-论十干得时不旺失时不弱)
-  - [05 论刑冲会合解法](knowledge/ziping/05-论刑冲会合解法)
-  - [06 论用神](knowledge/ziping/06-论用神)
+  - [01-十神与月令](knowledge/ziping/01-十神与月令)
+  - [02-刑冲会合](knowledge/ziping/02-刑冲会合)
+  - [03-取格与判格](knowledge/ziping/03-取格与判格)
+  - [04-行运通则](knowledge/ziping/04-行运通则)
+  - [05-各格精读与取运](knowledge/ziping/05-各格精读与取运)
 
 ## 资料来源
 
