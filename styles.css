@@ -852,13 +852,9 @@ body .content {
   border-right: 1px solid var(--line);
   color: inherit;
   display: block;
-  padding: 1.1rem 1rem 1.2rem 0;
+  padding: 1.1rem 1rem 1.2rem;
   text-decoration: none !important;
   transition: color 160ms ease, transform 160ms ease;
-}
-
-.doc-item + .doc-item {
-  padding-left: 1rem;
 }
 
 .doc-item:hover {

@@ -14,7 +14,7 @@
     <p>前两篇打基础，第三篇讲原局取格，后两篇讲行运与各格的取运差异。</p>
   </div>
   <div class="doc-grid">
-    <a class="doc-item" style="padding-left: 1rem;" href="#/knowledge/ziping/01-十神与月令">
+    <a class="doc-item" href="#/knowledge/ziping/01-十神与月令">
       <span class="doc-num">01</span>
       <h4>十神与月令</h4>
       <p>天干地支、藏干与十神生克；从月令找取格的线索</p>
